@@ -1,0 +1,47 @@
+[project]
+name = "ai-face-swap-generator"
+version = "0.6.3"
+description = "AI face swap generator — Windows desktop tool for real-time and offline face swapping."
+readme = "CONTRIBUTING.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ai-face-swap-generator contributors" }]
+
+dependencies = [
+    "numpy>=1.26",
+    "opencv-python>=4.9",
+    "onnxruntime-gpu>=1.17; sys_platform == 'win32'",
+    "onnxruntime>=1.17; sys_platform != 'win32'",
+    "pillow>=10.2",
+    "pydantic>=2.6",
+    "pyyaml>=6.0",
+    "rich>=13.7",
+    "typer>=0.12",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4", "mypy>=1.9"]
+
+[project.scripts]
+faceswap = "ai_faceswap.app.cli:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
