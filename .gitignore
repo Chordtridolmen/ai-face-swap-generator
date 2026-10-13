@@ -1,0 +1,46 @@
+# ai-face-swap-generator
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.spec
+
+# venv
+.venv/
+venv/
+env/
+
+# model weights (downloaded at runtime, never committed)
+models/weights/*.onnx
+models/weights/*.pth
+models/weights/*.pkl
+!models/weights/.gitkeep
+
+# datasets / cached frames
+datasets/raw/
+datasets/processed/
+cache/faces/
+cache/swaps/
+*.npy
+*.npz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# logs
+logs/
+*.log
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# build artifacts from native adapters
+native/cpp/build/
+native/csharp/bin/
+native/csharp/obj/
+native/java/target/
