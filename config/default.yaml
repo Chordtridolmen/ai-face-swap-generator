@@ -1,0 +1,38 @@
+# ai-face-swap-generator — default runtime config
+app:
+  name: ai-face-swap-generator
+  log_level: INFO
+  log_dir: logs
+
+device:
+  prefer: cuda          # cuda | dml | cpu
+  fp16: true
+
+detector:
+  backend: retinaface   # retinaface | scrfd | yunet
+  score_threshold: 0.62
+  max_faces: 4
+
+aligner:
+  template: arcface_112
+  landmark_model: models/weights/landmark_98.onnx
+
+swapper:
+  backend: inswapper
+  model: models/weights/inswapper_128.onnx
+  blend_alpha: 0.85
+  restore_face: true
+  restorer_model: models/weights/gfpgan_1.4.onnx
+
+renderer:
+  output_format: mp4
+  codec: h264_nvenc
+  fps_override: null
+
+cache:
+  root: cache
+  max_frames: 4096
+
+watermark:
+  enabled: true
+  text: "ai-face-swap-generator"
