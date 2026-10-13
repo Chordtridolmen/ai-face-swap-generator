@@ -1,0 +1,1 @@
+"""Application entry points: CLI, desktop bootstrap, config loader."""
